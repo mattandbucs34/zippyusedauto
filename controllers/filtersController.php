@@ -5,7 +5,6 @@
     if(strlen($prices) > 0 || strlen($years) > 0 || strlen($make) > 0 || strlen($type) > 0 || strlen($class) > 0){
       $query = "WHERE ";
     }
-// print_r("Makes: $make");
     $isFirst = true;
     foreach($strArray as $str) {
       if(strlen($str) > 0) {
@@ -17,20 +16,6 @@
         }
       }
     }
-    // print_r($query);
-    // if(strlen($prices) == 0 && strlen($years) == 0 && strlen($make) == 0 && strlen($type) == 0 && strlen($class) == 0) {
-    //   return $query;
-    // }else if(strlen($prices) > 0 && strlen($years) == 0 && strlen($make) == 0 && strlen($type) == 0 && strlen($class) == 0) {
-    //   $query = "WHERE $prices";
-    // }else if(strlen($prices) > 0 && strlen($years) > 0 && strlen($make) == 0 && strlen($type) == 0 && strlen($class) == 0) {
-    //   $query = "WHERE ($prices) AND ($years)";
-    // }else if(strlen($prices) > 0 && strlen($years) > 0 && strlen($make) > 0 && strlen($type) == 0 && strlen($class) == 0) {
-    //   $query = "WHERE ($prices) AND ($years) AND ($make)";
-    // }else if(strlen($prices) > 0 && strlen($years) > 0 && strlen($make) > 0 && strlen($type) > 0 && strlen($class) == 0) {
-    //   $query = "WHERE ($prices) AND ($years) AND ($make) AND ($type)";
-    // }else if(strlen($prices) > 0 && strlen($years) > 0 && strlen($make) > 0 && strlen($type) > 0 && strlen($class) > 0)
-
-    // print_r($query);
 
     return $query;
   }

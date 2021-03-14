@@ -9,7 +9,6 @@
   include('./controllers/sortController.php');
   $action = filter_input(INPUT_POST, 'action');
   $prices = array();
-  // print_r($action);
   switch($action) {
     case('sort_by_value'):
       
@@ -25,7 +24,7 @@
       $makesEval = "";
       $typesEval = "";
       $classEval = "";
-      
+
       if(!empty($prices)) {
         $priceEval = getPriceQueryString($prices);
       }
