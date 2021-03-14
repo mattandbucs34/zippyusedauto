@@ -20,8 +20,8 @@
 <?php include('head.php') ?>
 <body>
   <?php include('./views/header.php') ?>
-  <?php include('./views/filterSidebar.php') ?>
   <main>
+    <?php include('./views/filterSidebar.php') ?>
     <?php include('./views/vehicleList.php') ?>
   </main>
   <?php include('./views/footer.php') ?>
