@@ -13,7 +13,7 @@ body {
 main {
   max-height: 100%;
   display: grid;
-  grid-template-columns: 14.5rem minmax(754px, auto);
+  grid-template-columns: 15.5rem minmax(754px, auto);
   /* width: 800px;
   margin: 0 auto;
   box-shadow: 0 3px 4px rgba(0 0 0 / 50%); */
@@ -57,10 +57,6 @@ footer {
   height: 5rem;
   overflow-y: auto;
   border-bottom: 1px solid lightgrey;
-}
-
-.price-filter header {
-  border-bottom: none;
 }
 
 .vehicle-list {
@@ -108,4 +104,34 @@ footer {
 
 .copyright {
   font-size: 10pt;
+}
+
+
+/***************************************************************************************/
+/***************************************************************************************/
+/*********************************Filter Sidebar****************************************/
+/***************************************************************************************/
+/***************************************************************************************/
+
+.filter-selection-container label {
+  display: grid;
+  font-size: 0.8rem;
+  line-height: 1.3rem;
+}
+
+.price-filter label {
+  grid-template-columns: 11rem auto;
+}
+
+.year-filter label {
+  grid-template-columns: 3em auto;
+}
+
+.make-filter label,
+.type-filter label {
+  grid-template-columns: 4.5rem auto;
+}
+
+.class-filter label {
+  grid-template-columns: 5rem auto;
 }

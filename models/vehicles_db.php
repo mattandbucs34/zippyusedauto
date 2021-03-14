@@ -28,4 +28,14 @@
     $statement->closeCursor();
     return $vehicles;
   }
+
+  function filterVehicles($str) {
+    global $db;
+    $query = "SELECT * FROM vehicles INNER JOIN types t ON t.type_id = vehicles.type_id INNER JOIN makes m ON m.make_id = vehicles.make_id INNER JOIN classes c ON c.class_id = vehicles.class_id $str ORDER BY price DESC";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $filtered = $statement->fetchAll();
+    $statement->closeCursor();
+    return $filtered;
+  }
 ?>

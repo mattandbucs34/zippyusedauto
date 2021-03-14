@@ -1,11 +1,14 @@
 <?php
-  $sortedBy = filter_input(INPUT_POST, 'sort_decision', FILTER_VALIDATE_INT);
-
-  if($sortedBy == NULL || $sortedBy == FALSE) {
-    $str = "";
-  }else {
-    $str = getSortString($sortedBy);
-    $vehicles = sortVehicles($str);
+  $sortedBy = 1;
+  if(isset($_POST['sort_decision'])) {
+    $sortedBy = filter_input(INPUT_POST, 'sort_decision', FILTER_VALIDATE_INT);
+  
+    if($sortedBy == NULL || $sortedBy == FALSE) {
+      $str = "";
+    }else {
+      $str = getSortString($sortedBy);
+      $vehicles = sortVehicles($str);
+    }
   }
 
   function getSortString($sortedBy) {

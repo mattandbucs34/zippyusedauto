@@ -1,30 +1,5 @@
 <?php 
-  include('./controllers/sortController.php');
-  // $sortedBy = filter_input(INPUT_POST, 'sort_decision', FILTER_VALIDATE_INT);
-
-  // if($sortedBy == NULL || $sortedBy == FALSE) {
-  //   $str = "";
-  // }else {
-  //   $str = getSortString($sortedBy);
-  //   $vehicles = sortVehicles($str);
-  // }
-
-  // function getSortString($sortedBy) {
-  //   if($sortedBy == 1 || $sortedBy == 2) {
-  //     $sortCat = 'price';
-  //   }else {
-  //     $sortCat = 'year';
-  //   }
-
-  //   if($sortedBy == 1 || $sortedBy == 3) {
-  //     $direction = 'DESC';
-  //   }else {
-  //     $direction = 'ASC';
-  //   }
-
-  //   $str = "ORDER BY $sortCat $direction";
-  //   return $str;
-  // }
+  // include('./controllers/sortController.php');
 ?>
 <section>
   <form action="." method="POST" class="sort-form">

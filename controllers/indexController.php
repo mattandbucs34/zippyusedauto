@@ -19,12 +19,11 @@
       }
       $vehicles = sortVehicles($str);
       // header("Location: .?sortedBy=$sortedBy");
-      include('index.php');
+      // include('index.php');
       break;
     case('full_list');
     default: {
       $sortedBy = filter_input(INPUT_GET, 'sort_decision', FILTER_VALIDATE_INT);
-      $direction = 'I am something';
       if($sortedBy == NULL || $sortedBy == FALSE) {
         $vehicles = getAllVehicles();
         $str = $sortedBy;
