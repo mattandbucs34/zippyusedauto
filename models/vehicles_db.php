@@ -38,4 +38,13 @@
     $statement->closeCursor();
     return $filtered;
   }
+
+  function removeVehicle($vehicleID) {
+    global $db;
+    $query = 'DELETE FROM vehicles WHERE vehicle_id = :vehicle_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':vehicle_id', $vehicleID);
+    $statement->execute();
+    $statement->closeCursor();
+  }
 ?>

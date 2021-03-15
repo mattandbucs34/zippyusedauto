@@ -6,3 +6,5 @@
   <link rel="stylesheet" type="text/css" href="css/zippy.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" >
 </head>
+<body>
+  <?php include('./views/header.php') ?>

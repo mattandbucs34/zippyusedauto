@@ -78,12 +78,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include('head.php') ?>
-<body>
-  <?php include('./views/header.php') ?>
   <main>
     <?php include('./views/filterSidebar.php') ?>
     <?php include('./views/vehicleList.php') ?>
   </main>
   <?php include('./views/footer.php') ?>
-</body>
-</html>

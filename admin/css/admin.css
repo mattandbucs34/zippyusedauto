@@ -1,0 +1,50 @@
+.admin-container {
+  display: grid;
+  grid-template-rows: 3.5rem auto;
+}
+
+.admin .list-row {
+  grid-template-columns: repeat(7, minmax(75px, 125px));
+}
+
+.btn.delete{
+  border: none;
+  background: none;
+}
+
+.btn.delete:hover {
+  outline: 1px solid lightgrey;
+}
+
+.btn.delete:active {
+  transform: translateY(2px);
+}
+
+.btn.delete:focus {
+  outline: none;
+}
+
+.class-list-container {
+  display: grid;
+  grid-template-rows: 3rem auto;
+}
+
+.class-list-grid {
+  display: grid;
+  grid-template-columns: 15rem 20rem;
+  column-gap: 2rem;
+}
+
+.class-list-body .list-row {
+  line-height: 1.75rem;
+  grid-template-columns: repeat(2, minmax(75px, 125px));
+}
+
+.class-list-body .list-row form {
+  text-align: right;
+}
+
+
+.icon-plus {
+  margin-right: 0.25rem;
+}
