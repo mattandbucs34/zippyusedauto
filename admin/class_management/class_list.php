@@ -1,6 +1,6 @@
-<?php include('../head.php') ?>
-  <main>
-    <aside></aside>
+<?php include('../views/mgmtHeader.php') ?>
+  <main class="classes-container">
+  <?php include('../views/managementNav.php') ?>
     <section class="class-list-container">
       <header><h3>Classes</h3></header>
       <div class="class-list-grid">
@@ -22,7 +22,7 @@
           <input type="hidden" name="action" value="add_new_class">
           <label for="class_name">Name:</label>
           <input type="text" name="class_name" />
-          <button type="submit"><span class="icon-plus"></span>Add</button>
+          <button type="submit" ><span class="icon-plus"></span>Add</button>
         </form>
       </div>
     </section>

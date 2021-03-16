@@ -107,6 +107,18 @@ footer {
   font-size: 10pt;
 }
 
+.btn {
+  box-shadow: 0 2px 3px rgba(0 0 0 / 50%);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.btn:focus {
+  outline: none;
+}
 
 /***************************************************************************************/
 /***************************************************************************************/
@@ -135,4 +147,44 @@ footer {
 
 .class-filter label {
   grid-template-columns: 5rem auto;
+}
+
+/*************************************************************************************************/
+/*************************************************************************************************/
+/***********************************MEDIA QUERIES*************************************************/
+/*************************************************************************************************/
+/*************************************************************************************************/
+
+@media only screen and (max-width: 768px) {
+  main {
+    display: flex;
+  }
+  .filter-sidebar {
+    display: none;
+  }
+
+  .vehicle-list-container {
+    margin-top: unset;
+  }
+
+  .vehicle-list-container header {
+    display: grid;
+    grid-template-columns: 50% auto;
+    justify-content: unset;
+  }
+
+  .vehicle-list-container section {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .vehicle-list .wrapper {
+    width: 100vw;
+    overflow-x: auto;
+  }
+
+  .vehicle-list-header,
+  .vehicle-list-body {
+    width: max-content;
+  }
 }

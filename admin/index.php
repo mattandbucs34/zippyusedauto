@@ -20,7 +20,7 @@
   if($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if($action == NULL) {
-      $action = 'view_page';
+      $action = '';
     }
   }
   
@@ -161,11 +161,12 @@
 ?>
 
 
-<?php include('head.php') ?>
+<?php include('./views/indexHeader.php') ?>
+
   <main>
     <?php include('../views/filterSidebar.php') ?>
     <div class="admin-container">
-      <?php include('./views/managementNav.php') ?>
+      <?php include('./views/indexNav.php') ?>
       <?php include('./views/vehicleList.php') ?>
     </div>
   </main>

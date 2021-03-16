@@ -27,6 +27,7 @@
 .class-list-container {
   display: grid;
   grid-template-rows: 3rem auto;
+  margin-top: 3rem;
 }
 
 .class-list-grid {
@@ -48,3 +49,84 @@
 .icon-plus {
   margin-right: 0.25rem;
 }
+
+.classes-container,
+.makes_container,
+.types-container,
+.new_vehicle_container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.new_vehicle_form {
+  display: flex;
+  flex-direction: column;
+  height: 21rem;
+  margin-top: 3rem;
+  width: 25rem;
+  align-items: center;
+  box-shadow: 0 3px 4px rgba(0 0 0 / 50%), 0 -3px 4px rgba(0 0 0 / 50%);
+}
+
+.new_vehicle_form header {
+  height: 3rem;
+    background: linear-gradient(90deg, transparent -10%, green);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.label_container {
+  margin-bottom: 1rem;
+}
+
+.new_vehicle_label {
+  display: grid;
+  line-height: 1.75rem;
+  grid-template-columns: 7rem 9rem;
+  margin-bottom: .5rem;
+}
+
+.add_btn_container {
+  width: 100%;
+  position: relative;
+}
+
+.add_btn_container button {
+  position: absolute;
+  right: 1rem;
+  height: 2rem;
+}
+
+.add_btn_container .icon-plus {
+  margin-right: .5rem;
+}
+
+.admin_nav {
+  display: flex;
+  position: absolute;
+  height: 2rem;
+}
+
+.nav_button {
+  background: rgb(102, 102, 102);
+  margin-right: 1rem;
+  padding: 0 1rem .5rem 1rem;
+}
+
+.nav_button a {
+  color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.nav_button a:visited {
+  color: white;
+}
+

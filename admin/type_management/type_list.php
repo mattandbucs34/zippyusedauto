@@ -1,6 +1,6 @@
-<?php include('../head.php') ?>
-  <main>
-    <aside></aside>
+<?php include('../views/mgmtHeader.php') ?>
+  <main class="types-container">
+  <?php include('../views/managementNav.php') ?>
     <section class="class-list-container">
       <header><h3>Types</h3></header>
       <div class="class-list-grid">
