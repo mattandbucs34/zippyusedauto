@@ -57,7 +57,7 @@
     $statement->bindValue(':price', $price);
     $statement->bindValue(':type_id', $type);
     $statement->bindValue(':class_id', $class);
-    $statement->bindValue('make_id', $make);
+    $statement->bindValue(':make_id', $make);
     $statement->execute();
     $statement->closeCursor();
   }
