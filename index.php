@@ -50,44 +50,51 @@
       $typesEval = "";
       $classEval = "";
 
+      
       if(!empty($prices)) {
         $priceEval = getPriceQueryString($prices);
       }
-
+      
       if(!empty($selectedYears)) {
         $yearEval = getYearQueryString($selectedYears);
       }
-
+      
       if(!empty($selectedMakes)) {
         $makesEval = getMakesQueryString($selectedMakes);
       }
-
+      
       if(!empty($selectedTypes)) {
         $typesEval = getTypesQueryString($selectedTypes);
       }
-
+      
       if(!empty($selectedClasses)) {
         $classEval = getClassesQueryString($selectedClasses);
       }
       
       $str = getFinalQuery($priceEval, $yearEval, $makesEval, $typesEval, $classEval);
       
+      
       if(strlen($str) == 0) {
         $vehicles = getAllVehicles();  
       }else {
         $vehicles = filterVehicles($str);
       }
-      
+      $years = getDistinctYears();
+      $classes = getDistinctClasses();
+      $makes = getDistinctMakes();
+      $types = getDistinctTypes();
+      include("./views/home.php");
     break;
     default:
       $vehicles = getAllVehicles();
+      $years = getDistinctYears();
+      $classes = getDistinctClasses();
+      $makes = getDistinctMakes();
+      $types = getDistinctTypes();
       include('./views/home.php');
     break;
   }
   
-  $years = getDistinctYears();
-  $classes = getDistinctClasses();
-  $makes = getDistinctMakes();
-  $types = getDistinctTypes();
+ 
 
 ?>
