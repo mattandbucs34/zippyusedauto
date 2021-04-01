@@ -1,17 +1,42 @@
 <?php
+  $lifetime = 60 * 60 * 25 * 14; //cookie lifetime of 2 weeks
+  session_set_cookie_params($lifetime, '/');
+  session_start();
+
+  //include database functions
   require('./models/database.php');
   require('./models/vehicles_db.php');
   require('./models/classes_db.php');
   require('./models/makes_db.php');
   require('./models/types_db.php');
+
+  //include controller functions
   // require('./controllers/indexController.php');
   include('./controllers/filtersController.php');
   include('./controllers/sortController.php');
   $action = filter_input(INPUT_POST, 'action');
+  if($action == NULL) {
+    $action = filter_input(INPUT_GET, 'action');
+    if($action == NULL) {
+      $action == "";
+    }
+  }
+
+  $firstName = filter_input(INPUT_GET, 'first_name');
+  $userID = FALSE;
+  if($firstName != NULL) {
+    $_SESSION['userid'] = $firstName;
+    $userID = $_SESSION['userid'];
+  }
+
   $prices = array();
   switch($action) {
-    case('sort_by_value'):
-      
+    case 'register':
+      include('./views/register.php');
+      // header("Location: ./views/register.php");
+    break;
+    case('logout'):
+      include('./views/logout.php');
     break;
     case('select_filter'):
       $prices = getPriceList();
@@ -52,20 +77,11 @@
       }else {
         $vehicles = filterVehicles($str);
       }
-
       
-      
-      // if($priceEval == NULL || $priceEval == FALSE) {
-      //   $error = "Something went wrong.";
-      //   include('./views/error.php');
-      //   $vehicles = getAllVehicles();
-      // } else {
-      //   $priceEval = "WHERE $priceEval";
-        
-      // }
     break;
     default:
       $vehicles = getAllVehicles();
+      include('./views/home.php');
     break;
   }
   
@@ -73,13 +89,5 @@
   $classes = getDistinctClasses();
   $makes = getDistinctMakes();
   $types = getDistinctTypes();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<?php include('head.php') ?>
-  <main>
-    <?php include('./views/filterSidebar.php') ?>
-    <?php include('./views/vehicleList.php') ?>
-  </main>
-  <?php include('./views/footer.php') ?>
+?>

@@ -27,6 +27,32 @@ main {
   padding: 0 1rem;
 }
 
+.zippy-title {
+  width: 20%;
+}
+
+.registration-link-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  align-items: center;
+}
+
+.registration-link-container a {
+  position: absolute;
+  right: 0;
+  color: black;
+  text-decoration: none;
+}
+
+.registration-link-container a:visited {
+  color: black;
+}
+
+.registration-link-container a:hover {
+  color: darkgreen;
+}
+
 footer {
   text-align: center;
   position: absolute;
@@ -151,11 +177,51 @@ footer {
 
 /*************************************************************************************************/
 /*************************************************************************************************/
-/***********************************MEDIA QUERIES*************************************************/
+/***********************************REGISTRATION**************************************************/
 /*************************************************************************************************/
 /*************************************************************************************************/
 
-@media only screen and (max-width: 768px) {
+.registration-container {
+  padding: 1rem;
+}
+
+.registration-container input {
+  margin-bottom: .5rem;
+  width: 100%;
+}
+
+.register-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.register-btn .btn {
+  background-color: #d7ecc3;
+  border: 1px solid darkgrey;
+  border-radius: .25rem;
+}
+
+/*************************************************************************************************/
+/*************************************************************************************************/
+/***********************************MEDIA QUERIES*************************************************/
+/*************************************************************************************************/
+/*************************************************************************************************/
+@media only screen and (max-width: 375px) {
+  .sort-form {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .zippy-title {
+    width: 100%;
+  }
+
+  .registration-link-container {
+    width: unset;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
   main {
     display: flex;
   }
@@ -187,4 +253,10 @@ footer {
   .vehicle-list-body {
     width: max-content;
   }
+
+  .registration-container,
+  .confirmation-message {
+    margin: 0 auto;
+  }
+
 }

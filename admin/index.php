@@ -101,7 +101,7 @@
           include('../views/error.php');
         }else {
           removeVehicle($vehicleID);
-          header("Location: .");
+          header("Location: .?action=");
         }
       }
     break;
