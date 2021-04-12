@@ -1,4 +1,4 @@
-<?php include('../views/mgmtHeader.php') ?>
+<?php include('../views/header.php') ?>
   <main class="makes_container">
     <?php include('../views/managementNav.php') ?>
     <section class="class-list-container">

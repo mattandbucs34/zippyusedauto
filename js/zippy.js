@@ -1,5 +1,17 @@
-console.log(screen.width);
-const screenWidth = screen.width;
+document.addEventListener('readystatechange', (e) => {
+    const screenWidth = window.outerWidth.toFixed(2);
+    console.log(document.readyState);
+    createCookie('screenWidth', screenWidth);
+})
+
+function createCookie(name, screenWidth) {
+  let expiration = "";
+  let date = new Date();
+  date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+  expiration = "; expires=" + date.toUTCString();
+
+  document.cookie = escape(name) + "=" + escape(screenWidth) + expiration + "; path=/";
+}
 
 // if(screenWidth > 650) {
 //   const element = document.getElementById("filter-section");

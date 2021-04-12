@@ -5,7 +5,7 @@
   <title>Zippy Used Autos</title>
   <link rel="stylesheet" type="text/css" href="css/zippy.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" >
-  
+  <script src="./js/zippy.js"></script>
 </head>
 <body>
   <header class="main-header">
@@ -13,7 +13,7 @@
       <h2>Zippy Used Autos</h2>
     </div>
     <div class="registration-link-container">
-      <?php if(($action != 'register' && $action != 'logout') && !isset($_SESSION['userid'])) { print_r($action) ?>
+      <?php if(($action != 'register' && $action != 'logout') && !isset($_SESSION['userid'])) { ?>
         <a href=".?action=register">Register</a>
         <?php }else if(($action != 'register' && $action != 'logout') && isset($_SESSION['userid'])) { ?>
           <a href=".?action=logout">Log Out</a>

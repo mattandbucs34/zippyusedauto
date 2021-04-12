@@ -4,6 +4,7 @@
   require('../../models/makes_db.php');
   require('../../models/types_db.php');
   require('../../models/vehicles_db.php');
+  require_once('../util/valid_admin.php');
 
   $action = filter_input(INPUT_POST, 'action');
   if($action == NULL) {
@@ -11,6 +12,10 @@
     if($action == NULL) {
       $action = 'get_page_data';
     }
+  }
+
+  if(!check_valid_admin()) {
+    header("Location: ../?action=show_login");
   }
 
   switch($action) {

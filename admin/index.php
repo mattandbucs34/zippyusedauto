@@ -1,13 +1,19 @@
 <?php
-  require('../models/database.php');
-  require('../models/vehicles_db.php');
-  require('../models/classes_db.php');
-  require('../models/makes_db.php');
-  require('../models/types_db.php');
-  // require('./controllers/indexController.php');
+  // $lifetime = 60 * 60 * 24; //cookie lifetime of 1 day for security reasons
+  // session_set_cookie_params($lifetime, '/');
+  // $_COOKIE["screenWidth"];
+  // session_start();
+
+  require_once('../models/database.php');
+  require_once('../models/vehicles_db.php');
+  require_once('../models/classes_db.php');
+  require_once('../models/makes_db.php');
+  require_once('../models/types_db.php');
+  require_once('./models/admin_db.php');
+  require_once('./util/valid_admin.php');
+  include('./controllers/adminController.php');
   include('../controllers/filtersController.php');
   include('../controllers/sortController.php');
-  include('../controllers/adminController.php');
   $prices = array();
   $homePage = 'home';
   $vehiclePage = 'vehicle';
@@ -16,14 +22,20 @@
   $classesPage = 'class';
   $currentPage = 'home';
 
-  $action = filter_input(INPUT_POST, 'action');
-  if($action == NULL) {
-    $action = filter_input(INPUT_GET, 'action');
-    if($action == NULL) {
-      $action = '';
-    }
-  }
+  // $action = filter_input(INPUT_POST, 'action');
+  // if($action == NULL) {
+  //   $action = filter_input(INPUT_GET, 'action');
+  //   if($action == NULL) {
+  //     $action = 'view_page';
+  //     // $page = $homePage;
+  //   }
+  // }
   
+  if(!check_valid_admin()) {
+    // header("Location: .?action=show_login");
+    include_once('./views/login.php');
+  }
+
   switch($action) {
     case('view_page'):
       $page = filter_input(INPUT_GET, 'page');
@@ -33,29 +45,51 @@
       if($currentPage != $page) {
         switch($page) {
           case($homePage):
-          default:
+            $years = getDistinctYears();
+            $classes = getDistinctClasses();
+            $makes = getDistinctMakes();
+            $types = getDistinctTypes();
+            $vehicles = getAllVehicles();
             $currentPage = $homePage;
-            header("Location: .");
+            include('./views/home.php');
+            // $currentPage = $homePage;
+            // header("Location: .");
           break;
+
           case($vehiclePage):
             $currentPage = $vehiclePage;
             include('./views/vehicleManagement.php');
           break;
+
           case($makesPage):
             $currentPage = $makesPage;
             include('./views/makesManagement.php');
           break;
+
           case($typesPage):
             $currentPage = $typesPage;
             include('./views/typesManagement.php');
           break;
+
           case($classesPage):
             $classes = getDistinctClasses();
             $currentPage = $classesPage;
             include('./views/classesManagement.php');
             // header("Location: .?page=$classesPage");
           break;
+          default:
+          break;          
         }
+      }else {
+        $years = getDistinctYears();
+        $classes = getDistinctClasses();
+        $makes = getDistinctMakes();
+        $types = getDistinctTypes();
+        $vehicles = getAllVehicles();
+        $currentPage = $homePage;
+        include('./views/home.php');
+        // $currentPage = $homePage;
+        // header("Location: .");
       }
     case('select_page'):
       if(isset($_POST['nav_button'])) {
@@ -63,7 +97,6 @@
         if($currentPage != $page) {
           switch($page) {
             case($homePage):
-            default:
               $currentPage = $homePage;
               // header("Location: .");
               include('index.php');
@@ -86,12 +119,14 @@
               // include('./views/classesManagement.php');
               header("Location: .?action=view_page&page=$classesPage");
             break;
+            default:
+            break;
           }
         }
       }
     break;
     case('delete_vehicle'):
-      if(isset($_POST['delete_vehicle'])) {
+      // if(isset($_POST['delete_vehicle'])) {
         $vehicleID = filter_input(INPUT_POST, 'vehicle_id', FILTER_VALIDATE_INT);
         $makeID = filter_input(INPUT_POST, 'make_id', FILTER_VALIDATE_INT);
         $typeID = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT);
@@ -103,7 +138,7 @@
           removeVehicle($vehicleID);
           header("Location: .?action=");
         }
-      }
+      // }
     break;
     case('sort_by_value'):
       
@@ -147,27 +182,12 @@
       }else {
         $vehicles = filterVehicles($str);
       }
+      $years = getDistinctYears();
+      $classes = getDistinctClasses();
+      $makes = getDistinctMakes();
+      $types = getDistinctTypes();
     break;
     default:
-      $vehicles = getAllVehicles();
-      $currentPage = $homePage; 
     break;
   }
-  
-  $years = getDistinctYears();
-  $classes = getDistinctClasses();
-  $makes = getDistinctMakes();
-  $types = getDistinctTypes();
 ?>
-
-
-<?php include('./views/indexHeader.php') ?>
-
-  <main>
-    <?php include('../views/filterSidebar.php') ?>
-    <div class="admin-container">
-      <?php include('./views/indexNav.php') ?>
-      <?php include('./views/vehicleList.php') ?>
-    </div>
-  </main>
-<?php include('../views/footer.php') ?>

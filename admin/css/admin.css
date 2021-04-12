@@ -130,3 +130,58 @@
   color: white;
 }
 
+.login-main {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  width: 30rem;
+}
+
+.login-error {
+  color: red;
+}
+
+.registration-body.login {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-footer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-input-container {
+  display: grid;
+  grid-template-columns: 6rem auto;
+  height: 1.8rem;
+}
+
+.login-input-container input {
+  height: 1.4rem;
+}
+
+.login-input-container label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.admin-footer {
+  display: flex;
+  border-top: 1px solid rgba(0 0 0 / 20%);
+  box-shadow: 0 -3px 3px rgba(0 0 0 / 20%);
+}
+
+footer .site-map {
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.copyright {
+  position: absolute;
+  right: 2rem;
+  bottom: 1rem;
+}

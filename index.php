@@ -1,7 +1,9 @@
 <?php
-  $lifetime = 60 * 60 * 25 * 14; //cookie lifetime of 2 weeks
+  $lifetime = 60 * 60 * 24 * 14; //cookie lifetime of 2 weeks
   session_set_cookie_params($lifetime, '/');
+  $_COOKIE["screenWidth"];
   session_start();
+  $_SESSION['is_valid_admin'] = false;
 
   //include database functions
   require('./models/database.php');
@@ -73,7 +75,6 @@
       
       $str = getFinalQuery($priceEval, $yearEval, $makesEval, $typesEval, $classEval);
       
-      
       if(strlen($str) == 0) {
         $vehicles = getAllVehicles();  
       }else {
@@ -94,7 +95,4 @@
       include('./views/home.php');
     break;
   }
-  
- 
-
 ?>

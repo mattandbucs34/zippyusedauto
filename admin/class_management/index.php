@@ -1,6 +1,7 @@
 <?php
   require('../../models/classes_db.php');
   require('../../models/database.php');
+  require_once('../util/valid_admin.php');
 
   $action = filter_input(INPUT_POST, 'action');
   if($action == NULL) {
@@ -8,6 +9,10 @@
     if($action == NULL) {
       $action = 'show_class_list';
     }
+  }
+
+  if(!check_valid_admin()) {
+    header("Location: ../?action=show_login");
   }
 
   switch($action) {

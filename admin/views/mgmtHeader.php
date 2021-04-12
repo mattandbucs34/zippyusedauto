@@ -10,4 +10,4 @@
   <link rel="stylesheet" type="text/css" href="../css/admin.css" >
 </head>
 <body>
-<?php include('../../views/header.php') ?>
+<?php include('header.php') ?>

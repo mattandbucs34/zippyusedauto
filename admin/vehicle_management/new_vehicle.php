@@ -1,4 +1,4 @@
-<?php include('../views/mgmtHeader.php') ?>
+<?php include('../views/header.php') ?>
 <main class='new_vehicle_container'>
   <?php include('../views/managementNav.php') ?>
   <form action="." method="post" class="new_vehicle_form">
