@@ -44,7 +44,7 @@
         $error = "Inputs are invalid. Please check your form and try again.";
         include('../../views/error.php');
       }else {
-        addVehicle($model_year, $make, $model, $price, $class, $type);
+        VehiclesDB::addVehicle($model_year, $make, $model, $price, $class, $type);
         header("Location: .");
       }
     break;

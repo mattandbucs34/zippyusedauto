@@ -17,7 +17,7 @@
 
   switch($action) {
     case 'show_types_list':
-      $types = getDistinctTypes();
+      $types = TypesDB::getDistinctTypes();
       include('type_list.php');
     break;
     case 'add_new_type':
@@ -26,7 +26,7 @@
         $error = "There was an issue getting the data. Please try again.";
         include('../../views/error.php');
       }else {
-        addNewType($typeName);
+        TypesDB::addNewType($typeName);
         header("Location: .");
       }
     break;
@@ -36,7 +36,7 @@
         $error = "The Type you selected is not valid. Please check the information and try again.";
         include('../../views/error.php');
       }else {
-        removeType($type_id);
+        TypesDB::removeType($type_id);
         header("Location: .");
       }
       break;

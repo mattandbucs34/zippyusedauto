@@ -17,7 +17,7 @@
         $error = "That's just wrong";
         include('./views/error.php');
       }
-      $vehicles = sortVehicles($str);
+      $vehicles = VehiclesDB::sortVehicles($str);
       // header("Location: .?sortedBy=$sortedBy");
       // include('index.php');
       break;
@@ -25,11 +25,11 @@
     default: {
       $sortedBy = filter_input(INPUT_GET, 'sort_decision', FILTER_VALIDATE_INT);
       if($sortedBy == NULL || $sortedBy == FALSE) {
-        $vehicles = getAllVehicles();
+        $vehicles = VehiclesDB::getAllVehicles();
         $str = $sortedBy;
       }else {
         $str = getSortString($sortedBy);
-        $vehicles = sortVehicles($str);
+        $vehicles = VehiclesDB::sortVehicles($str);
         // header("Location: .?sortedBy=$sortedBy");
       }
       break;

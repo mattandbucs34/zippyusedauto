@@ -17,7 +17,7 @@
 
   switch($action) {
     case 'show_makes_list':
-      $makes = getDistinctMakes();
+      $makes = MakesDB::getDistinctMakes();
       include('make_list.php');
     break;
     case 'add_new_make':
@@ -26,7 +26,7 @@
         $error = "There was an issue getting the data. Please try again.";
         include('../../views/error.php');
       }else {
-        addNewMake($makeName);
+        MakesDB::addNewMake($makeName);
         header("Location: .");
       }
     break;
@@ -36,7 +36,7 @@
         $error = "The Make you selected is not valid. Please check the information and try again.";
         include('../../views/error.php');
       }else {
-        removeClass($make_id);
+        MakesDB::removeClass($make_id);
         header("Location: .");
       }
       break;

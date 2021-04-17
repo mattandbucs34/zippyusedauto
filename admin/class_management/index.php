@@ -17,7 +17,7 @@
 
   switch($action) {
     case 'show_class_list':
-      $classes = getDistinctClasses();
+      $classes = ClassesDB::getDistinctClasses();
       include('class_list.php');
     break;
     case 'add_new_class':
@@ -26,7 +26,7 @@
         $error = "There was an issue getting the data. Please try again.";
         include('../../views/error.php');
       }else {
-        addNewClass($className);
+        ClassesDB::addNewClass($className);
         header("Location: .");
       }
     break;
@@ -36,7 +36,7 @@
         $error = "The Class you selected is not valid. Please check the information and try again.";
         include('../../views/error.php');
       }else {
-        removeClass($class_id);
+        ClassesDB::removeClass($class_id);
         header("Location: .");
       }
       break;

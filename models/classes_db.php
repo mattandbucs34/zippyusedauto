@@ -1,6 +1,7 @@
 <?php
-  function getDistinctClasses() {
-    global $db;
+class ClassesDB {
+  public static function getDistinctClasses() {
+    $db = Database::getDB();
     $query = 'SELECT DISTINCT * FROM classes ORDER BY class ASC';
     $statement = $db->prepare($query);
     $statement->execute();
@@ -9,8 +10,8 @@
     return $classes;
   }
 
-  function addNewClass($className) {
-    global $db;
+  public static function addNewClass($className) {
+    $db = Database::getDB();
     $query = 'INSERT INTO classes (class) VALUES (:class)';
     $statement = $db->prepare($query);
     $statement->bindValue(':class', $className);
@@ -18,12 +19,13 @@
     $statement->closeCursor();
   }
 
-  function removeClass($class_id) {
-    global $db;
+  public static function removeClass($class_id) {
+    $db = Database::getDB();
     $query = 'DELETE FROM classes WHERE class_id = :class_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':class_id', $class_id);
     $statement->execute();
     $statement->closeCursor();
   }
+}
 ?>

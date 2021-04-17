@@ -7,7 +7,7 @@
       $str = "";
     }else {
       $str = getSortString($sortedBy);
-      $vehicles = sortVehicles($str);
+      $vehicles = VehiclesDB::sortVehicles($str);
     }
   }
 

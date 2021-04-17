@@ -76,22 +76,22 @@
       $str = getFinalQuery($priceEval, $yearEval, $makesEval, $typesEval, $classEval);
       
       if(strlen($str) == 0) {
-        $vehicles = getAllVehicles();  
+        $vehicles = VehiclesDB::getAllVehicles();  
       }else {
-        $vehicles = filterVehicles($str);
+        $vehicles = VehiclesDB::filterVehicles($str);
       }
-      $years = getDistinctYears();
-      $classes = getDistinctClasses();
-      $makes = getDistinctMakes();
-      $types = getDistinctTypes();
+      $years = VehiclesDB::getDistinctYears();
+      $classes = ClassesDB::getDistinctClasses();
+      $makes = MakesDB::getDistinctMakes();
+      $types = TypesDB::getDistinctTypes();
       include("./views/home.php");
     break;
     default:
-      $vehicles = getAllVehicles();
-      $years = getDistinctYears();
-      $classes = getDistinctClasses();
-      $makes = getDistinctMakes();
-      $types = getDistinctTypes();
+      $vehicles = VehiclesDB::getAllVehicles();
+      $years = VehiclesDB::getDistinctYears();
+      $classes = ClassesDB::getDistinctClasses();
+      $makes = MakesDB::getDistinctMakes();
+      $types = TypesDB::getDistinctTypes();
       include('./views/home.php');
     break;
   }

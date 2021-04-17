@@ -45,11 +45,11 @@
       if($currentPage != $page) {
         switch($page) {
           case($homePage):
-            $years = getDistinctYears();
-            $classes = getDistinctClasses();
-            $makes = getDistinctMakes();
-            $types = getDistinctTypes();
-            $vehicles = getAllVehicles();
+            $years = VehiclesDB::getDistinctYears();
+            $classes = ClassesDB::getDistinctClasses();
+            $makes = MakesDB::getDistinctMakes();
+            $types = TypesDB::getDistinctTypes();
+            $vehicles = VehiclesDB::getAllVehicles();
             $currentPage = $homePage;
             include('./views/home.php');
             // $currentPage = $homePage;
@@ -72,7 +72,7 @@
           break;
 
           case($classesPage):
-            $classes = getDistinctClasses();
+            $classes = ClassesDB::getDistinctClasses();
             $currentPage = $classesPage;
             include('./views/classesManagement.php');
             // header("Location: .?page=$classesPage");
@@ -81,11 +81,11 @@
           break;          
         }
       }else {
-        $years = getDistinctYears();
-        $classes = getDistinctClasses();
-        $makes = getDistinctMakes();
-        $types = getDistinctTypes();
-        $vehicles = getAllVehicles();
+        $years = VehiclesDB::getDistinctYears();
+        $classes = ClassesDB::getDistinctClasses();
+        $makes = MakesDB::getDistinctMakes();
+        $types = TypesDB::getDistinctTypes();
+        $vehicles = VehiclesDB::getAllVehicles();
         $currentPage = $homePage;
         include('./views/home.php');
         // $currentPage = $homePage;
@@ -114,7 +114,7 @@
               include('./views/typesManagement.php');
             break;
             case($classesPage):
-              $classes = getDistinctClasses();
+              $classes = ClassesDB::getDistinctClasses();
               $currentPage = $classesPage;
               // include('./views/classesManagement.php');
               header("Location: .?action=view_page&page=$classesPage");
@@ -135,7 +135,7 @@
           $error = "The ID you selected is not valid";
           include('../views/error.php');
         }else {
-          removeVehicle($vehicleID);
+          VehiclesDB::removeVehicle($vehicleID);
           header("Location: .?action=");
         }
       // }

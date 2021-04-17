@@ -1,6 +1,7 @@
-<?php 
-  function getAllVehicles() {
-    global $db;
+<?php
+class VehiclesDB {
+  public static function getAllVehicles() {
+    $db = Database::getDB();
     $query = 'SELECT * FROM vehicles INNER JOIN types t ON t.type_id = vehicles.type_id INNER JOIN makes m ON m.make_id = vehicles.make_id INNER JOIN classes c ON c.class_id = vehicles.class_id ORDER BY price DESC';
     $statement = $db->prepare($query);
     $statement->execute();
@@ -9,8 +10,8 @@
     return $vehicles;
   }
 
-  function getDistinctYears() {
-    global $db;
+  public static function getDistinctYears() {
+    $db = Database::getDB();
     $query = "SELECT DISTINCT year FROM vehicles ORDER BY year DESC";
     $statement = $db->prepare($query);
     $statement->execute();
@@ -19,8 +20,8 @@
     return $years;
   }
 
-  function sortVehicles($direction) {
-    global $db;
+  public static function sortVehicles($direction) {
+    $db = Database::getDB();
     $query = "SELECT * FROM vehicles INNER JOIN types t ON t.type_id = vehicles.type_id INNER JOIN makes m ON m.make_id = vehicles.make_id INNER JOIN classes c ON c.class_id = vehicles.class_id $direction" ;
     $statement = $db->prepare($query);
     $statement->execute();
@@ -29,8 +30,8 @@
     return $vehicles;
   }
 
-  function filterVehicles($str) {
-    global $db;
+  public static function filterVehicles($str) {
+    $db = Database::getDB();
     $query = "SELECT * FROM vehicles INNER JOIN types t ON t.type_id = vehicles.type_id INNER JOIN makes m ON m.make_id = vehicles.make_id INNER JOIN classes c ON c.class_id = vehicles.class_id $str ORDER BY price DESC";
     $statement = $db->prepare($query);
     $statement->execute();
@@ -39,8 +40,8 @@
     return $filtered;
   }
 
-  function removeVehicle($vehicleID) {
-    global $db;
+  public static function removeVehicle($vehicleID) {
+    $db = Database::getDB();
     $query = 'DELETE FROM vehicles WHERE vehicle_id = :vehicle_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':vehicle_id', $vehicleID);
@@ -48,8 +49,8 @@
     $statement->closeCursor();
   }
 
-  function addVehicle($model_year, $make, $model, $price, $class, $type) {
-    global $db;
+  public static function addVehicle($model_year, $make, $model, $price, $class, $type) {
+    $db = Database::getDB();
     $query = 'INSERT INTO vehicles (year, model, price, type_id, class_id, make_id) VALUES (:model_year, :model, :price, :type_id, :class_id, :make_id)';
     $statement = $db->prepare($query);
     $statement->bindValue(':model_year', $model_year);
@@ -61,4 +62,5 @@
     $statement->execute();
     $statement->closeCursor();
   }
+}
 ?>

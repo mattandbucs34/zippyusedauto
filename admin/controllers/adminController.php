@@ -11,6 +11,7 @@
       $action = 'show_login';
     }
   }
+  
 
   switch($action) {
     case 'login':
@@ -39,6 +40,9 @@
       $confirmPW = filter_input(INPUT_POST, 'confirm_pwd');
 
       $errors = valid_registration($username, $password, $confirmPW);
+      if (username_exists($username)) {
+        array_push($errors, "The username you entered is already taken.");
+      }
       if(!empty($errors)) {
         add_admin($username, $password);
       }
