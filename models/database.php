@@ -1,8 +1,8 @@
 <?php
 class Database {
-  private static $dsn = 'mysql:host=localhost;dbname=zippyusedautos';
-  private static $username = 'root';
-  private static $password = 'YaZ5iaewp@z2GU5';
+  private static $dsn = 'mysql:host=xlf3ljx3beaucz9x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=p34n2tuedpgxjhka';
+  private static $username = 'nm1jisgbn5lvo5ok';
+  private static $password = 'ev83cyk2ajvggygq';
   private static $db;
 
   private function __construct() 
